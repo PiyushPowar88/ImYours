@@ -1,0 +1,37 @@
+174989947349-i4nfgsgslel5hhtr1is8bi4inb9muam5.apps.googleusercontent.com
+
+
+
+
+{
+  "access_token": "ya29.a0ARGnu0Ybcrd5v2jqStthUVdn1c73n-Olw2qjBOQXG-r_iZtVqiGb4DnZlORcOiZxqkqfjZ5ouEILQkAovpNyoiHS2sr7GEW0G3HlmqOQB0TbUgP7KDGKxnqGflZqz8zcQMnxVHxJtxDWmte2ccA3P5y_1qfBPpVDsx72y70O8I7QiGJfxDi-dvPy87eCGACXsuhepngaCgYKAY0SARcSFQHGX2Mi-fT1nrD8EGpTMkl0p9cL6Q0206", 
+  "refresh_token_expires_in": 604799, 
+  "expires_in": 3599, 
+  "token_type": "Bearer", 
+  "scope": "https://www.googleapis.com/auth/calendar", 
+  "refresh_token": "1//04aL0pRnfGTkkCgYIARAAGAQSNwF-L9IrcuffE9wTrDvBZs_FBNhnuAkD_M3mQ5c9dx2rXu4LPkwt1fdJ5O1T7Uc5ug3xhnCkrfQ"
+}
+
+
+
+Full backend flow, end to end
+Signup/Login
+   ↓
+Browse services (public) → pick slot → fill dynamic form + upload ID
+   ↓
+POST /api/bookings              → booking_status: pending
+   ↓
+POST /api/payment/create-order  → Razorpay order
+   ↓
+POST /api/payment/verify        → payment_status: paid, booking_status: waiting_approval
+   ↓
+Admin: GET /api/admin/bookings  → sees it in the queue
+   ↓
+PUT /api/admin/bookings/:id/approve  → Meet link generated, booking_status: confirmed, email sent
+
+
+
+
+1. without payment solts are booked 
+
+2. confirm deatils 
