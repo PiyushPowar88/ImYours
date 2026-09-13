@@ -12,6 +12,7 @@ const paymentRoutes = require('./routes/payment.routes');
 const adminRoutes = require('./routes/admin.routes');
 
 const app = express();
+app.set('trust proxy', 1);
 
 app.use(cors({ origin: env.CLIENT_URL, credentials: true }));
 
